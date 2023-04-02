@@ -41,6 +41,7 @@ defmodule ExInventory.MixProject do
       {:ex_money_sql, "~> 1.8"},
       {:paginator, "~> 1.2.0"},
       {:ecto_autoslug_field, "~> 3.0"},
+      {:ex_machina, "~> 2.4", only: :test},
     ]
   end
 

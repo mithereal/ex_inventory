@@ -4,7 +4,6 @@ defmodule ExInventory.DataCase do
   using do
     quote do
       import Ecto.Query
-      import Mox, only: [set_mox_from_context: 1]
       import ExInventory.DataCase
       import ExInventory.Factory
 
@@ -12,8 +11,6 @@ defmodule ExInventory.DataCase do
       alias ExInventory.Repo
 
       @moduletag capture_log: true
-
-      setup :set_mox_from_context
     end
   end
 
@@ -25,11 +22,6 @@ defmodule ExInventory.DataCase do
     end
 
     on_exit(fn ->
-      ExInventory.ComponentSupervisor
-      |> DynamicSupervisor.which_children()
-      |> Enum.map(fn {_, pid, _, _} -> pid end)
-      |> Enum.map(fn pid -> ExInventory.terminate_child(ExInventory.ComponentSupervisor, pid) end)
-
       ExInventory.SkuSupervisor
       |> DynamicSupervisor.which_children()
       |> Enum.map(fn {_, pid, _, _} -> pid end)

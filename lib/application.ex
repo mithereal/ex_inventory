@@ -7,7 +7,7 @@ defmodule ExInventory.Application do
 
   require Logger
 
-  def start(_type, _args) do
+  def start(_type, args) do
     repo = ExInventory.Config.repo()
 
     children =
@@ -15,7 +15,8 @@ defmodule ExInventory.Application do
         {repo, args},
         {Registry, keys: :duplicate, name: :on_hand},
         {Registry, keys: :duplicate, name: :back_ordered},
-        {Registry, keys: :duplicate, name: :in_transit}
+        {Registry, keys: :duplicate, name: :in_transit},
+        {DynamicSupervisor, name: ExInventory.SkuSupervisor, strategy: :one_for_one},
       ]
       |> maybe_autoload_exchange_rates()
 
