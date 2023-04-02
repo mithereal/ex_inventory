@@ -2,6 +2,7 @@ defmodule ExInventory.Currencies do
   @moduledoc false
   alias ExInventory.Schemas.Currency
   alias ExInventory.Config
+  alias Money.ExchangeRates
 
   require Logger
 
@@ -76,7 +77,7 @@ defmodule ExInventory.Currencies do
   end
 
   def convert(amount, dest_currency) do
-    latest_rates = Money.ExchangeRates.latest_rates()
+    latest_rates = ExchangeRates.latest_rates()
 
     rates =
       case(latest_rates) do
