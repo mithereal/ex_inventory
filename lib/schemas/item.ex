@@ -4,6 +4,7 @@ defmodule ExInventory.Schemas.Item do
   """
 
   alias ExInventory.Schemas.Sku
+  alias ExInventory.Schemas.Item.Location
 
   schema "inventory_items" do
     field(:title, :string)
@@ -11,5 +12,6 @@ defmodule ExInventory.Schemas.Item do
     field(:description, :string)
 
     belongs_to(:sku, Sku)
+    has_one(:location, Location)
   end
 end
