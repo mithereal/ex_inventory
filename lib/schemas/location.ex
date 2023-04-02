@@ -5,10 +5,10 @@ defmodule ExInventory.Schemas.Location do
   alias ExInventory.Schemas.Warehouse
 
   schema "inventory_locations" do
-    field :title, :string
+    field(:title, :string)
 
-    has_many :items, Item
-    has_one :warehouse, Warehouse
+    has_many(:items, Item)
+    has_one(:warehouse, Warehouse)
 
     timestamps()
   end

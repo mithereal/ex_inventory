@@ -4,9 +4,9 @@ defmodule ExInventory.Schemas.Sku do
   alias ExInventory.Schemas.Item
 
   schema "inventory_skus" do
-    field :sku, :string
+    field(:sku, :string)
 
-    has_one :item, Item
+    has_one(:item, Item)
 
     timestamps()
   end

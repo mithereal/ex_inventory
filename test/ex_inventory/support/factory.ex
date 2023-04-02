@@ -8,6 +8,7 @@ defmodule ExInventory.Factory do
       title: "Test"
     }
   end
+
   def currency_factory do
     %Currency{
       title: "Test"
@@ -28,18 +29,22 @@ defmodule ExInventory.Factory do
 
   def supervise(records) when is_list(records), do: Enum.map(records, &supervise/1)
 
-#  def supervise(%Component{} = component) do
-#    with {:ok, _pid} <-
-#           DynamicSupervisor.start_child(
-#             ExInventory.ComponentSupervisor,
-#             {ExInventory.GenServers.Component, [component: component]}
-#           ) do
-#      component
-#    end
-#  end
+  #  def supervise(%Component{} = component) do
+  #    with {:ok, _pid} <-
+  #           DynamicSupervisor.start_child(
+  #             ExInventory.ComponentSupervisor,
+  #             {ExInventory.GenServers.Component, [component: component]}
+  #           ) do
+  #      component
+  #    end
+  #  end
 
   def supervise(%Sku{} = sku) do
-    with {:ok, _pid} <- DynamicSupervisor.start_child(ExInventory.SkuSupervisor, {ExInventory.Servers.Sku, sku}) do
+    with {:ok, _pid} <-
+           DynamicSupervisor.start_child(
+             ExInventory.SkuSupervisor,
+             {ExInventory.Servers.Sku, sku}
+           ) do
       sku
     end
   end

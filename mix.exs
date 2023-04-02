@@ -4,7 +4,6 @@ defmodule ExInventory.MixProject do
   @version "1.5.3"
   @source_url "https://github.com/mithereal/ex_inventory"
 
-
   def project do
     [
       app: :ex_inventory,
@@ -41,7 +40,7 @@ defmodule ExInventory.MixProject do
       {:ex_money_sql, "~> 1.8"},
       {:paginator, "~> 1.2.0"},
       {:ecto_autoslug_field, "~> 3.0"},
-      {:ex_machina, "~> 2.4", only: :test},
+      {:ex_machina, "~> 2.4", only: :test}
     ]
   end
 
@@ -68,7 +67,6 @@ defmodule ExInventory.MixProject do
     ]
   end
 
-
   defp aliases do
     [
       c: "compile",
@@ -83,5 +81,4 @@ defmodule ExInventory.MixProject do
       install: ["ExInventory.install", "ecto.setup"]
     ]
   end
-
 end

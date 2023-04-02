@@ -4,9 +4,9 @@ defmodule ExInventory.Schemas.Item.Location do
   alias ExInventory.Schemas.Item
 
   schema "inventory_item_locations" do
-    field :title, :string
+    field(:title, :string)
 
-    belongs_to :items, Item
+    belongs_to(:items, Item)
 
     timestamps()
   end

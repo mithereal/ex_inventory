@@ -18,6 +18,5 @@ defmodule ExInventory.Servers.Sku do
 
   @impl true
   def init(%Schemas.Sku{} = sku) do
-
- end
- end
+  end
+end
