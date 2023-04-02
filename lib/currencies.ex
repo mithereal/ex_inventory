@@ -1,10 +1,11 @@
 defmodule ExInventory.Currencies do
   @moduledoc false
   alias ExInventory.Currency
-  alias ExInventory.Repo
   alias ExInventory.Config
 
   require Logger
+
+  @repo ExInventory.Config.repo()
 
   def init(_pid, _table) do
     currencies = []
@@ -28,8 +29,8 @@ defmodule ExInventory.Currencies do
   end
 
   def new(params) do
-    changeset = ExInventory.Currency.changeset(%ExInventory.Currency{}, params)
-    {status, x} = Repo.insert(changeset)
+    changeset = Currency.changeset(%Currency{}, params)
+    {status, x} = @repo.insert(changeset)
 
     Logger.info("Loading New Currency: " <> x.name)
 
@@ -52,7 +53,7 @@ defmodule ExInventory.Currencies do
   end
 
   def reload() do
-    currencies = Config.repo().all(Currency)
+    currencies = @repo.all(Currency)
 
     Logger.info("Reloading Currencies")
 
