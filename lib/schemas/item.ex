@@ -1,4 +1,6 @@
 defmodule ExInventory.Schemas.Item do
+  use ExInventory.Schema, type: ExInventory.Config.key_type()
+
   @moduledoc """
   The basic unit of inventory. every item can be in a registry by status on_hand etc
   """

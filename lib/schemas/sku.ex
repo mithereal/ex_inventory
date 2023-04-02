@@ -1,5 +1,6 @@
 defmodule ExInventory.Schemas.Sku do
-  use Ecto.Schema
+  use ExInventory.Schema, type: ExInventory.Config.key_type()
+
 
   alias ExInventory.Schemas.Item
 

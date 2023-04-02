@@ -1,7 +1,6 @@
 defmodule ExInventory.Schemas.Warehouse.Location do
-  use Ecto.Schema
+  use ExInventory.Schema, type: ExInventory.Config.key_type()
 
-  alias ExInventory.Schemas.Item
   alias ExInventory.Schemas.Warehouse
 
   schema "inventory_warehouse_locations" do
