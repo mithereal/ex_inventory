@@ -5,7 +5,7 @@ defmodule ExInventory.Currencies do
 
   require Logger
 
-  @repo ExInventory.Config.repo()
+  @repo Config.repo()
 
   def init(_pid, _table) do
     currencies = []
