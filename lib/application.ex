@@ -8,14 +8,45 @@ defmodule ExInventory.Application do
   require Logger
 
   def start(_type, _args) do
-    children = [
-      {Registry, keys: :duplicate, name: :on_hand},
-      {Registry, keys: :duplicate, name: :back_ordered},
-      {Registry, keys: :duplicate, name: :in_transit},
-    ]
+    repo = ExInventory.Config.repo()
+
+    children =
+      [
+        {repo, args},
+        {Registry, keys: :duplicate, name: :on_hand},
+        {Registry, keys: :duplicate, name: :back_ordered},
+        {Registry, keys: :duplicate, name: :in_transit}
+      ]
+      |> maybe_autoload_exchange_rates()
 
     opts = [strategy: :one_for_one, name: ExInventory.Supervisor]
 
     Supervisor.start_link(children, opts)
+  end
+
+  @version Mix.Project.config()[:version]
+  def version, do: @version
+
+  @doc """
+  Add a currency to the application and load into ets
+  """
+  def add_currency(params) do
+    ExInventory.Currencies.new(params)
+  end
+
+  defp maybe_autoload_exchange_rates(children) do
+    autoload = Application.get_env(:ex_inventory, :autoload_exchange_rates, false)
+
+    data =
+      if(autoload == true) do
+        [
+          {Cldr.Currency, [callback: {ExInventory.Currencies, :init, []}]},
+          {ExInventory.Currency.Reload, name: ExInventory.Currency.Reload}
+        ]
+      else
+        []
+      end
+
+    children ++ data
   end
 end
