@@ -23,6 +23,7 @@ defmodule ExInventory.Application do
     opts = [strategy: :one_for_one, name: ExInventory.Supervisor]
 
     Supervisor.start_link(children, opts)
+    |> load_skus()
   end
 
   @version Mix.Project.config()[:version]
@@ -49,5 +50,9 @@ defmodule ExInventory.Application do
       end
 
     children ++ data
+  end
+
+  defp load_skus(params) do
+    params
   end
 end

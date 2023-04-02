@@ -3,16 +3,18 @@ defmodule ExInventory do
   Documentation for `ExInventory`.
   """
 
+  @repo ExInventory.Config.repo()
+
   @doc """
   Hello world.
 
   ## Examples
 
-      iex> ExInventory.hello()
-      :world
+      iex> ExInventory.skus()
+      []
 
   """
-  def hello do
-    :world
+  def skus do
+     @repo.all(ExInventory.Schemas.Sku)
   end
 end
