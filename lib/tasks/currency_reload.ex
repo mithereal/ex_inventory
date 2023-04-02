@@ -1,4 +1,4 @@
-defmodule ExInventory.Currency.Reload do
+defmodule ExInventory.Tasks.Currency.Reload do
   use Task
   require Logger
 

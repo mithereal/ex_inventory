@@ -41,7 +41,7 @@ defmodule ExInventory.Application do
       if(autoload == true) do
         [
           {Cldr.Currency, [callback: {ExInventory.Currencies, :init, []}]},
-          {ExInventory.Currency.Reload, name: ExInventory.Currency.Reload}
+          {ExInventory.Tasks.Currency.Reload, name: ExInventory.Tasks.Currency.Reload}
         ]
       else
         []
