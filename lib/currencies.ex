@@ -1,6 +1,6 @@
 defmodule ExInventory.Currencies do
   @moduledoc false
-  alias ExInventory.Currency
+  alias ExInventory.Schemas.Currency
   alias ExInventory.Config
 
   require Logger
