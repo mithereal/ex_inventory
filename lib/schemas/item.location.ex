@@ -1,5 +1,5 @@
 defmodule ExInventory.Schemas.Item.Location do
-  use ExInventory.Schema, type: ExInventory.Config.key_type()
+  use ExInventory.Schema
 
 
   alias ExInventory.Schemas.Item

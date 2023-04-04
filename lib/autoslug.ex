@@ -4,23 +4,23 @@ defmodule ExInventory.AutoSlug do
     quote do
       @repo ExInventory.Config.repo()
 
-      def get_by_slug(slug) do
-        @repo.get_by(__MODULE__, slug: slug)
+      def get_by_slug(slug, struct \\ __MODULE__) do
+        @repo.get_by(struct, slug: slug)
       end
 
-      def get_by_slug!(slug) do
-        @repo.get_by!(__MODULE__, slug: slug)
+      def get_by_slug!(slug, struct \\ __MODULE__) do
+        @repo.get_by!(struct, slug: slug)
       end
     end
   end
 
   @repo ExInventory.Config.repo()
 
-  def get_by_slug(slug, struct \\ %{}) do
+  def get_by_slug(slug, struct \\ __MODULE__) do
     @repo.get_by(struct, slug: slug)
   end
 
-  def get_by_slug!(slug, struct \\ %{}) do
+  def get_by_slug!(slug, struct \\ __MODULE__) do
     @repo.get_by!(struct, slug: slug)
   end
 end

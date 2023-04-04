@@ -1,5 +1,5 @@
 defmodule ExInventory.Schemas.Currency do
-  use ExInventory.Schema, type: ExInventory.Config.key_type()
+  use ExInventory.Schema
 
   import Ecto.Changeset
 

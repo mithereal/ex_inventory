@@ -7,7 +7,7 @@ defmodule ExInventory.Tasks.Skus.Load do
   @moduledoc false
 
   def start_link(_data \\ []) do
-    Logger.info("Load Skus.")
+    Logger.info("Loading Skus.")
     Task.start_link(&load/0)
   end
 
