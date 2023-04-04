@@ -16,8 +16,12 @@ defmodule ExInventory.Tasks.Skus.Load do
     after
       3000 ->
         ExInventory.skus()
-        |> Enum.each(fn x -> nil
-        ## load skus into registry, then we decide if there are items, and if so start genserverts and register based on quantity
+        |> Enum.each(fn x ->
+          x
+          |> ExInventory.Sku.Server.child_spec()
+          |> ExInventory.SkuSupervisor.start_child()
+
+          ## load skus into registry, then we decide if there are items, and if so start genserverts and register based on quantity
         end)
     end
   end
