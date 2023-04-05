@@ -28,6 +28,7 @@ defmodule ExInventory.Servers.Sku do
 
   @impl true
   def init(_) do
+    ## start links to items
     {:ok, __MODULE__}
   end
 end

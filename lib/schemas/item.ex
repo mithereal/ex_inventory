@@ -13,7 +13,11 @@ defmodule ExInventory.Schemas.Item do
     field(:sub_title, :string)
     field(:description, :string)
 
+    field(:quantity_on_hand, :integer)
+    field(:quantity_on_backorder, :integer)
+    field(:quantity_in_transit, :integer)
+
     belongs_to(:sku, Sku)
-    has_one(:location, Location)
+    belongs_to(:location, Location)
   end
 end

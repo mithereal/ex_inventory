@@ -46,6 +46,10 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:sub_title, :string)
       add(:description, :string)
 
+      add(:quantity_on_hand, :integer, default: 0)
+      add(:quantity_on_backorder, :integer, default: 0)
+      add(:quantity_in_transit, :integer, default: 0)
+
       add(
         :location_id,
         references(:inventory_item_locations, on_delete: :nothing, type: key_type)
