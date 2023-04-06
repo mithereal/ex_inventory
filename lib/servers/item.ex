@@ -31,4 +31,21 @@ defmodule ExInventory.Servers.Item do
 
     {:ok, __MODULE__}
   end
+
+  def load_item_state_by_quantity(item) do
+    item.quantity_on_hand
+    |> Enum.each(fn x ->
+      Registry.register(:on_hand, item.sku, item.sku)
+    end)
+
+    item.quantity_on_backorder
+    |> Enum.each(fn x ->
+      Registry.register(:on_backorder, item.sku, item.sku)
+    end)
+
+    item.quantity_in_transit
+    |> Enum.each(fn x ->
+      Registry.register(:in_transit, item.sku, item.sku)
+    end)
+  end
 end
