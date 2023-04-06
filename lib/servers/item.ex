@@ -32,7 +32,7 @@ defmodule ExInventory.Servers.Item do
     {:ok, __MODULE__}
   end
 
-  def load_item_state_by_quantity(pid, item) do
+  def register_items_by_quantity(pid, item) do
     item.quantity_on_hand
     |> Enum.each(fn x ->
       Registry.register(pid, :on_hand, item.sku, item.sku)
