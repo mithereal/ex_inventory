@@ -19,9 +19,8 @@ defmodule ExInventory.Tasks.Skus.Load do
         |> Enum.each(fn x ->
           x
           |> ExInventory.Sku.Supervisor.start_child()
-
-          ## load skus into registry, then we decide if there are items, and if so start genserverts and register based on quantity
         end)
+        ExInventory.Tasks.Items.Load.start_link()
     end
   end
 end

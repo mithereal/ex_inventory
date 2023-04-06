@@ -57,4 +57,9 @@ defmodule ExInventory.Application do
     ExInventory.Tasks.Skus.Load.start_link()
     params
   end
+
+  defp load_items(params) do
+    ExInventory.Tasks.Items.Load.start_link()
+    params
+  end
 end
