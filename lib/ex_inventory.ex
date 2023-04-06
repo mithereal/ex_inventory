@@ -5,6 +5,8 @@ defmodule ExInventory do
 
   @repo ExInventory.Config.repo()
 
+  import Ecto.Query
+
   @doc """
   get skus.
 
