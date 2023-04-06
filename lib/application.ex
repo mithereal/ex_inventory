@@ -16,7 +16,8 @@ defmodule ExInventory.Application do
         {Registry, keys: :duplicate, name: :on_hand},
         {Registry, keys: :duplicate, name: :back_ordered},
         {Registry, keys: :duplicate, name: :in_transit},
-        {DynamicSupervisor, name: ExInventory.SkuSupervisor, strategy: :one_for_one}
+        {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Sku.Supervisor},
+        {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Item.Supervisor}
       ]
       |> maybe_autoload_exchange_rates()
 

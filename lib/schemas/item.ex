@@ -6,7 +6,7 @@ defmodule ExInventory.Schemas.Item do
   """
 
   alias ExInventory.Schemas.Sku
-  alias ExInventory.Schemas.Item.Location
+  alias ExInventory.Schemas.Item.Properties
 
   schema "inventory_items" do
     field(:title, :string)
@@ -17,7 +17,12 @@ defmodule ExInventory.Schemas.Item do
     field(:quantity_on_backorder, :integer)
     field(:quantity_in_transit, :integer)
 
+    field(:height, :float)
+    field(:width, :float)
+    field(:length, :float)
+    field(:weight, :float)
+    field(:location, :string)
+
     belongs_to(:sku, Sku)
-    belongs_to(:location, Location)
   end
 end

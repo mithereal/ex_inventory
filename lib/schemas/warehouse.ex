@@ -3,13 +3,13 @@ defmodule ExInventory.Schemas.Warehouse do
 
 
 
-  alias ExInventory.Schemas.Warehouse.Location, as: WAREHOUSE_LOCATION
+  alias ExInventory.Schemas.Warehouse.Properties
 #  alias ExInventory.Schemas.Item.Location, as: ITEM_LOCATION
 
   schema "inventory_warehouses" do
     field(:title, :string)
+    field(:location, :string)
 
-    belongs_to(:location, WAREHOUSE_LOCATION)
   #  has_many(:items, Item, through: ITEM_LOCATION)
 
     timestamps()

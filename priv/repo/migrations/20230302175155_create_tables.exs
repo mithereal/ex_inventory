@@ -4,13 +4,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
   def change do
     key_type = ExInventory.Config.key_type(:migration)
 
-    create table(:inventory_locations, primary_key: false) do
-      add(:id, key_type, primary_key: true)
-      add(:name, :string)
-
-      timestamps()
-    end
-
     create table(:inventory_skus, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:sku, :string)
@@ -18,24 +11,11 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       timestamps()
     end
 
-    create table(:inventory_item_locations, primary_key: false) do
-      add(:id, key_type, primary_key: true)
-      add(:title, :string)
-    end
-
-    create table(:inventory_warehouse_locations, primary_key: false) do
-      add(:id, key_type, primary_key: true)
-      add(:title, :string)
-    end
 
     create table(:inventory_warehouses, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:title, :string)
-
-      add(
-        :location_id,
-        references(:inventory_warehouse_locations, on_delete: :nothing, type: key_type)
-      )
+      add(:location, :string)
 
       timestamps()
     end
@@ -50,10 +30,11 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:quantity_on_backorder, :integer, default: 0)
       add(:quantity_in_transit, :integer, default: 0)
 
-      add(
-        :location_id,
-        references(:inventory_item_locations, on_delete: :nothing, type: key_type)
-      )
+      add(:height, :float)
+      add(:width, :float)
+      add(:length, :float)
+      add(:weight, :float)
+      add(:location, :string)
 
       add(
         :sku_id,

@@ -24,17 +24,11 @@ defmodule ExInventory.Servers.Item do
   end
 
   defp name(%Item{} = schema), do: item(schema)
-  defp item(schema), do: {:via, Registry, registry(schema)}
-
-  defp registry(schema) do
-    case schema.quantity do
-      _-> {ExInventory.SkuRegistry, to_string(schema.id)}
-    end
-  end
+  defp item(schema), do: {:via, Registry, {ExInventory.SkuRegistry, to_string(schema.id)}}
 
   @impl true
-  def init(_) do
-    ## start links to items
+  def init(item) do
+
     {:ok, __MODULE__}
   end
 end
