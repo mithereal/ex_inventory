@@ -25,7 +25,7 @@ defmodule ExInventory.Servers.Sku do
   end
 
   defp name(%Sku{sku: id}), do: name(id)
-  defp name(id), do: {:via, Registry, {ExInventory.SkuRegistry, to_string(id)}}
+  defp name(id), do: {:via, Registry, {ExInventory.Sku.Registry, to_string(id)}}
 
   @impl true
   def init(init) do
