@@ -28,7 +28,6 @@ defmodule ExInventory.Servers.Item do
 
   @impl true
   def init(item) do
-
     {:ok, __MODULE__}
   end
 
@@ -40,7 +39,7 @@ defmodule ExInventory.Servers.Item do
 
     item.quantity_on_backorder
     |> Enum.each(fn x ->
-      Registry.register(pid,:on_backorder, item.sku, item.sku)
+      Registry.register(pid, :on_backorder, item.sku, item.sku)
     end)
 
     item.quantity_in_transit
