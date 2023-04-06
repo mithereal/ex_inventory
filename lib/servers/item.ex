@@ -24,7 +24,7 @@ defmodule ExInventory.Servers.Item do
   end
 
   defp name(%Item{} = schema), do: item(schema)
-  defp item(schema), do: {:via, Registry, {ExInventory.SkuRegistry, to_string(schema.id)}}
+  defp item(schema), do: {:via, Registry, {ExInventory.Item.Registry, to_string(schema.id)}}
 
   @impl true
   def init(item) do
