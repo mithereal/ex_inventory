@@ -11,13 +11,7 @@ defmodule ExInventory.Factory do
 
   def currency_factory do
     %Currency{
-      title: "Test"
-    }
-  end
-
-  def location_factory do
-    %Location{
-      title: "Test"
+      name: "Test"
     }
   end
 
@@ -42,8 +36,8 @@ defmodule ExInventory.Factory do
   def supervise(%Sku{} = sku) do
     with {:ok, _pid} <-
            DynamicSupervisor.start_child(
-             ExInventory.SkuSupervisor,
-             {ExInventory.Servers.Sku, sku}
+             ExInventory.Sku.Supervisor,
+             {ExInventory.Servers.Sku, sku.sku}
            ) do
       sku
     end

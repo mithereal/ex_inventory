@@ -3,6 +3,7 @@ defmodule ExInventory.DataCase do
 
   using do
     quote do
+      use ExUnit.Case, async: true
       import Ecto.Query
       import ExInventory.DataCase
       import ExInventory.Factory
@@ -14,6 +15,7 @@ defmodule ExInventory.DataCase do
     end
   end
 
+
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(ExInventory.Repo)
 
@@ -22,10 +24,10 @@ defmodule ExInventory.DataCase do
     end
 
     on_exit(fn ->
-      ExInventory.SkuSupervisor
+      ExInventory.Sku.Supervisor
       |> DynamicSupervisor.which_children()
       |> Enum.map(fn {_, pid, _, _} -> pid end)
-      |> Enum.map(fn pid -> DynamicSupervisor.terminate_child(ExInventory.SkuSupervisor, pid) end)
+      |> Enum.map(fn pid -> DynamicSupervisor.terminate_child(ExInventory.Sku.Supervisor, pid) end)
     end)
 
     :ok

@@ -1,3 +1,3 @@
 defmodule ExInventoryTest do
-  use Warehouse.DataCase
+  use ExInventory.DataCase
 end

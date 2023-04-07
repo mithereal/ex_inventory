@@ -20,7 +20,7 @@ defmodule ExInventory.Servers.Sku do
     }
   end
 
-  def start_link([sku]) do
+  def start_link(sku) do
     GenServer.start_link(__MODULE__, sku, name: name(sku))
   end
 
@@ -29,6 +29,12 @@ defmodule ExInventory.Servers.Sku do
 
   @impl true
   def init(init) do
-    {:ok, __MODULE__}
+    state = %{sku: init}
+    {:ok, state}
+  end
+
+  @impl true
+  def handle_call(:get_info, _from, state) do
+    {:reply, state, state}
   end
 end
