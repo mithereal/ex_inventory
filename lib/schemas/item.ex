@@ -1,11 +1,13 @@
 defmodule ExInventory.Schemas.Item do
-  use ExInventory.Schema, type: ExInventory.Config.key_type()
+  use ExInventory.Schema
 
   @moduledoc """
   The basic unit of inventory. every item can be in a registry by status on_hand etc
   """
 
   alias ExInventory.Schemas.Sku
+  alias ExInventory.Schemas.Component
+  alias ExInventory.Schemas.Location
   alias ExInventory.Schemas.Item.Properties
 
   schema "inventory_items" do
@@ -21,8 +23,10 @@ defmodule ExInventory.Schemas.Item do
     field(:width, :float)
     field(:length, :float)
     field(:weight, :float)
-    field(:location, :string)
 
+    belongs_to :location, Location
     belongs_to(:sku, Sku)
+
+    has_many :components, Component
   end
 end

@@ -43,6 +43,7 @@ defmodule ExInventory.MixProject do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
+      {:decimal, "~> 2.0.0", override: true},
       {:postgrex, ">= 0.0.0"},
       {:ecto, "~> 3.5"},
       {:ecto_sql, "~> 3.5"},
@@ -51,7 +52,8 @@ defmodule ExInventory.MixProject do
       {:ex_money_sql, "~> 1.8"},
       {:paginator, "~> 1.2.0"},
       {:ecto_autoslug_field, "~> 3.0"},
-      {:ex_machina, "~> 2.4", only: :test}
+      {:ex_machina, "~> 2.4", only: :test},
+      {:grpc, "~> 0.5.0"}
     ]
   end
 
