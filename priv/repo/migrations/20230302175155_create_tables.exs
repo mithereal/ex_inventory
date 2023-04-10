@@ -34,11 +34,14 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:width, :float)
       add(:length, :float)
       add(:weight, :float)
-      add(:location, :string)
 
       add(
         :sku_id,
         references(:inventory_skus, on_delete: :nothing, type: key_type)
+      )
+      add(
+        :location_id,
+        references(:inventory_locations, on_delete: :nothing, type: key_type)
       )
 
       timestamps()
