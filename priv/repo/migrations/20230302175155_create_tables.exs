@@ -26,7 +26,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:on_hand, :integer)
       add(:on_backorder, :integer)
       add(:in_transit, :integer)
-      add(:type,  Ecto.Enum, values: [:item, :component, :part])
     end
 
     create table(:inventory_properties, primary_key: false) do
@@ -34,7 +33,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:height, :float)
       add(:width, :float)
       add(:weight, :float)
-      add(:type,  Ecto.Enum, values: [:item, :component, :part])
       add(:customer_price, Money.Ecto.Composite.Type)
       add(:whosale_price, Money.Ecto.Composite.Type)
       add(:purchase_price, Money.Ecto.Composite.Type)

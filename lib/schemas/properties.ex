@@ -14,7 +14,6 @@ defmodule ExInventory.Schemas.Properties do
           width: float(),
           length: float(),
           weight: float(),
-          type: enum(),
           customer_price: Money.Ecto.Composite.Type,
           whosale_price: Money.Ecto.Composite.Type,
           purchase_price: Money.Ecto.Composite.Type
@@ -25,7 +24,6 @@ defmodule ExInventory.Schemas.Properties do
     field(:width, :float)
     field(:length, :float)
     field(:weight, :float)
-    field(:type,  Ecto.Enum, values: [:item, :component, :part])
 
     field(:customer_price, Money.Ecto.Composite.Type)
     field(:whosale_price, Money.Ecto.Composite.Type)

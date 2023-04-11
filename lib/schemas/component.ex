@@ -3,6 +3,7 @@ defmodule ExInventory.Schemas.Component do
 
   alias ExInventory.Schemas.Part
   alias ExInventory.Schemas.Sku
+  alias ExInventory.Schemas.Properties
 
   @type t :: %__MODULE__{
           title: string(),
@@ -14,5 +15,6 @@ defmodule ExInventory.Schemas.Component do
     field(:title, :string)
     has_many(:parts, Part)
     belongs_to(:sku, Sku)
+    belongs_to(:properties, Properties)
   end
 end

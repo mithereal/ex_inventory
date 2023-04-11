@@ -19,6 +19,8 @@ defmodule ExInventory.Schemas.Part do
     field(:rma_description, :string)
 
     belongs_to(:location, Location)
+    belongs_to(:properties, Properties)
+    belongs_to(:quantity, Quantity)
     belongs_to(:sku, Sku)
   end
 

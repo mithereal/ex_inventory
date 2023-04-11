@@ -7,6 +7,7 @@ defmodule ExInventory.Schemas.Item do
 
   alias ExInventory.Schemas.Sku
   alias ExInventory.Schemas.Component
+  alias ExInventory.Schemas.Part
   alias ExInventory.Schemas.Location
   alias ExInventory.Schemas.Item.Quantity
 
@@ -17,7 +18,8 @@ defmodule ExInventory.Schemas.Item do
           location: Location.t(),
           sku: Sku.t(),
           quantity: Quantity.t(),
-          components: [Component.t()]
+          components: [Component.t()],
+          parts: [Part.t()]
         }
 
   schema "inventory_items" do
@@ -30,5 +32,6 @@ defmodule ExInventory.Schemas.Item do
     belongs_to(:quantity, Quantity)
 
     has_many(:components, Component)
+    has_many(:parts, Part)
   end
 end
