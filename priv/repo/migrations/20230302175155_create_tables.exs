@@ -13,11 +13,12 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:id, key_type, primary_key: true)
       add(:title, :string)
 
-      add(:area, Ecto.Enum,
-        values: [:assembly, :receiving, :shipping, :storage]
-      )
+      add(:area, Ecto.Enum, values: [:assembly, :receiving, :shipping, :storage])
 
-      add(:status, :string)
+      add(:status, Ecto.Enum,
+        values: [:enabled, :disabled],
+        default: :enabled
+      )
     end
 
     create table(:inventory_quantitys, primary_key: false) do

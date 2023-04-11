@@ -17,11 +17,14 @@ defmodule ExInventory.Schemas.Location do
     field(:title, :string)
 
     field(:area, Ecto.Enum,
-      values: [:assembly, :receiving, :shipped, :shipping, :storage, :transit],
+      values: [:assembly, :receiving, :shipping, :storage],
       default: :receiving
     )
 
-    field(:status, :string, default: false)
+    field(:status, Ecto.Enum,
+      values: [:enabled, :disabled],
+      default: :enabled
+    )
 
     has_many(:parts, Part)
     has_many(:items, Item)
