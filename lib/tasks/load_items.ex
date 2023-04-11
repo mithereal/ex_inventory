@@ -23,19 +23,24 @@ defmodule ExInventory.Tasks.Items.Load do
   end
 
   def register_items_by_quantity({pid, item}) do
-    item.quantity_on_hand
+    item.quantity.on_hand
     |> Enum.each(fn x ->
       Registry.register(pid, :on_hand, item.sku, item.sku)
     end)
 
-    item.quantity_on_backorder
+    item.quantity.on_backorder
     |> Enum.each(fn x ->
       Registry.register(pid, :on_backorder, item.sku, item.sku)
     end)
 
-    item.quantity_in_transit
+    item.quantity.in_transit
     |> Enum.each(fn x ->
       Registry.register(pid, :in_transit, item.sku, item.sku)
+    end)
+
+    item.quantity.reserved
+    |> Enum.each(fn x ->
+      Registry.register(pid, :reserved, item.sku, item.sku)
     end)
   end
 end
