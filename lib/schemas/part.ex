@@ -12,12 +12,12 @@ defmodule ExInventory.Schemas.Part do
         }
 
   schema "inventory_parts" do
-    field :serial_number, :string
-    field :assembly_build_id, :integer
-    field :rma_description, :string
+    field(:serial_number, :string)
+    field(:assembly_build_id, :integer)
+    field(:rma_description, :string)
 
-    belongs_to :location, Location
-    belongs_to :sku, Sku
+    belongs_to(:location, Location)
+    belongs_to(:sku, Sku)
 
     timestamps()
   end

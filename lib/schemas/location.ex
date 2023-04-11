@@ -14,17 +14,18 @@ defmodule ExInventory.Schemas.Location do
         }
 
   schema "inventory_locations" do
-    field :name, :string
+    field(:name, :string)
 
-    field :area, Ecto.Enum,
+    field(:area, Ecto.Enum,
       values: [:assembly, :receiving, :shipped, :shipping, :storage, :transit],
       default: :receiving
+    )
 
-    field :disabled, :boolean, default: false
-    field :status, :string, default: false
+    field(:disabled, :boolean, default: false)
+    field(:status, :string, default: false)
 
-    has_many :parts, Part
-    has_many :items, Item
+    has_many(:parts, Part)
+    has_many(:items, Item)
 
     timestamps()
   end

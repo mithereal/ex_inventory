@@ -22,7 +22,6 @@ defmodule ExInventory.Tasks.Items.Load do
     end
   end
 
-
   def register_items_by_quantity({pid, item}) do
     item.quantity_on_hand
     |> Enum.each(fn x ->

@@ -24,9 +24,9 @@ defmodule ExInventory.Schemas.Item do
     field(:length, :float)
     field(:weight, :float)
 
-    belongs_to :location, Location
+    belongs_to(:location, Location)
     belongs_to(:sku, Sku)
 
-    has_many :components, Component
+    has_many(:components, Component)
   end
 end
