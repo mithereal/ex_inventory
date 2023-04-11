@@ -7,7 +7,6 @@ defmodule ExInventory.Schemas.Location do
   @type t :: %__MODULE__{
           title: string(),
           area: atom(),
-          disabled: boolean(),
           status: string(),
           parts: [Part.t()],
           items: [Item.t()]
