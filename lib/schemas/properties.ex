@@ -25,6 +25,10 @@ defmodule ExInventory.Schemas.Properties do
     field(:length, :float)
     field(:weight, :float)
 
+    field(:on_hand, :integer)
+    field(:on_backorder, :integer)
+    field(:in_transit, :integer)
+
     field(:customer_price, Money.Ecto.Composite.Type)
     field(:whosale_price, Money.Ecto.Composite.Type)
     field(:purchase_price, Money.Ecto.Composite.Type)

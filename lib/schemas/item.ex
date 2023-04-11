@@ -9,7 +9,7 @@ defmodule ExInventory.Schemas.Item do
   alias ExInventory.Schemas.Component
   alias ExInventory.Schemas.Part
   alias ExInventory.Schemas.Location
-  alias ExInventory.Schemas.Item.Quantity
+  alias ExInventory.Schemas.Item.Properties
 
   @type t :: %__MODULE__{
           title: string(),
@@ -17,7 +17,7 @@ defmodule ExInventory.Schemas.Item do
           description: string(),
           location: Location.t(),
           sku: Sku.t(),
-          quantity: Quantity.t(),
+          properties: Properties.t(),
           components: [Component.t()],
           parts: [Part.t()]
         }
@@ -29,7 +29,7 @@ defmodule ExInventory.Schemas.Item do
 
     belongs_to(:location, Location)
     belongs_to(:sku, Sku)
-    belongs_to(:quantity, Quantity)
+    belongs_to(:properties, Properties)
 
     has_many(:components, Component)
     has_many(:parts, Part)

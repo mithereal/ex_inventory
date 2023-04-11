@@ -3,14 +3,16 @@ defmodule ExInventory.Schemas.Part do
 
   import Ecto.Changeset
 
-  alias ExInventory.Schemas.{Location, Sku}
+  alias ExInventory.Schemas.{Location, Sku, Properties}
 
   @type t :: %__MODULE__{
           location: Location.t(),
           serial_number: string(),
           assembly_build_id: string(),
           rma_description: string(),
-          sku: Sku.t()
+          sku: Sku.t(),
+          location: Location.t(),
+          properties: Properties.t()
         }
 
   schema "inventory_parts" do
@@ -20,7 +22,6 @@ defmodule ExInventory.Schemas.Part do
 
     belongs_to(:location, Location)
     belongs_to(:properties, Properties)
-    belongs_to(:quantity, Quantity)
     belongs_to(:sku, Sku)
   end
 

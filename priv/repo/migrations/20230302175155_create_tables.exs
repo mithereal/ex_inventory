@@ -28,18 +28,15 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       soft_delete_columns()
     end
 
-    create table(:inventory_quantitys, primary_key: false) do
-      add(:id, key_type, primary_key: true)
-      add(:on_hand, :integer)
-      add(:on_backorder, :integer)
-      add(:in_transit, :integer)
-    end
 
     create table(:inventory_properties, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:height, :float)
       add(:width, :float)
       add(:weight, :float)
+      add(:on_hand, :integer)
+      add(:on_backorder, :integer)
+      add(:in_transit, :integer)
       add(:customer_price, Money.Ecto.Composite.Type)
       add(:whosale_price, Money.Ecto.Composite.Type)
       add(:purchase_price, Money.Ecto.Composite.Type)
@@ -86,11 +83,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(
         :parts_id,
         references(:inventory_parts, on_delete: :nothing, type: key_type)
-      )
-
-      add(
-        :quantity_id,
-        references(:inventory_quantitys, on_delete: :nothing, type: key_type)
       )
 
       add(
@@ -146,11 +138,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(
         :parts_id,
         references(:inventory_parts, on_delete: :nothing, type: key_type)
-      )
-
-      add(
-        :quantity_id,
-        references(:inventory_quantitys, on_delete: :nothing, type: key_type)
       )
 
       add(
