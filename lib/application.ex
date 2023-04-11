@@ -20,7 +20,8 @@ defmodule ExInventory.Application do
         {Registry, keys: :unique, name: ExInventory.Sku.Registry},
         {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Sku.Supervisor},
         {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Item.Supervisor},
-        {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Part.Supervisor}
+        {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Part.Supervisor},
+        {DynamicSupervisor, strategy: :one_for_one, name: ExInventory.Component.Supervisor}
       ]
       |> maybe_autoload_exchange_rates()
 
