@@ -23,7 +23,7 @@ defmodule ExInventory.Schemas.Quantity do
     field(:in_transit, :integer)
     field(:type, :string)
 
-    belongs_to(:part, Part)
-    belongs_to(:item, Item)
+    has_one(:part, Part)
+    has_one(:item, Item)
   end
 end

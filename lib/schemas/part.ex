@@ -20,8 +20,6 @@ defmodule ExInventory.Schemas.Part do
 
     belongs_to(:location, Location)
     belongs_to(:sku, Sku)
-
-    timestamps()
   end
 
   def changeset(part, attrs) do

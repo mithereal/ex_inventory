@@ -13,7 +13,5 @@ defmodule ExInventory.Schemas.Warehouse do
     field(:location, :string)
 
     #  has_many(:items, Item, through: ITEM_LOCATION)
-
-    timestamps()
   end
 end

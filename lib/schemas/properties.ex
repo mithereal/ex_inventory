@@ -14,7 +14,10 @@ defmodule ExInventory.Schemas.Properties do
           width: float(),
           length: float(),
           weight: float(),
-          type: string()
+          type: string(),
+          customer_price: Money.Ecto.Composite.Type,
+          whosale_price: Money.Ecto.Composite.Type,
+          purchase_price: Money.Ecto.Composite.Type
         }
 
   schema "inventory_properties" do
@@ -23,6 +26,10 @@ defmodule ExInventory.Schemas.Properties do
     field(:length, :float)
     field(:weight, :float)
     field(:type, :string)
+
+    field(:customer_price, Money.Ecto.Composite.Type)
+    field(:whosale_price, Money.Ecto.Composite.Type)
+    field(:purchase_price, Money.Ecto.Composite.Type)
 
     belongs_to(:part, Part)
     belongs_to(:item, Item)
