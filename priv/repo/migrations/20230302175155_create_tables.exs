@@ -14,7 +14,7 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:title, :string)
 
       add(:area, Ecto.Enum,
-        values: [:assembly, :receiving, :shipped, :shipping, :storage, :transit]
+        values: [:assembly, :receiving, :shipping, :storage]
       )
 
       add(:status, :string)
