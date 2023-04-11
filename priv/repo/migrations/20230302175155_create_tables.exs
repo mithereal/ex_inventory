@@ -5,6 +5,13 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
   def change do
     key_type = ExInventory.Config.key_type(:migration)
 
+    create table(:inventory_components, primary_key: false) do
+      add(:id, key_type, primary_key: true)
+      add(:title, :string)
+
+      soft_delete_columns()
+    end
+
     create table(:inventory_skus, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:sku, :string)
@@ -72,6 +79,16 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       )
 
       add(
+        :component_id,
+        references(:inventory_components, on_delete: :nothing, type: key_type)
+      )
+      ###todo: change to through assoc bc we can have many
+      add(
+        :parts_id,
+        references(:inventory_parts, on_delete: :nothing, type: key_type)
+      )
+
+      add(
         :quantity_id,
         references(:inventory_quantitys, on_delete: :nothing, type: key_type)
       )
@@ -120,5 +137,28 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       )
     end
 
+    alter table(:inventory_components) do
+      add(
+        :sku_id,
+        references(:inventory_skus, on_delete: :nothing, type: key_type)
+      )
+###todo: change to through assoc bc we can have many
+      add(
+        :parts_id,
+        references(:inventory_parts, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :quantity_id,
+        references(:inventory_quantitys, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :properties_id,
+        references(:inventory_properties, on_delete: :nothing, type: key_type)
+      )
+
+
+    end
   end
 end

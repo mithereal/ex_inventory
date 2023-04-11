@@ -12,7 +12,7 @@ defmodule ExInventory.Schemas.Quantity do
           on_hand: integer(),
           on_backorder: integer(),
           in_transit: integer(),
-          type: enum(),
+          type: Enum.t(),
           part: Part.t(),
           item: Item.t()
         }
@@ -21,7 +21,7 @@ defmodule ExInventory.Schemas.Quantity do
     field(:on_hand, :integer)
     field(:on_backorder, :integer)
     field(:in_transit, :integer)
-    field(:type,  Ecto.Enum, values: [:item, :component, :part])
+    field(:type, Ecto.Enum, values: [:item, :component, :part])
 
     has_one(:part, Part)
     has_one(:item, Item)
