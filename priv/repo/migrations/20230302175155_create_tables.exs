@@ -12,7 +12,11 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
     create table(:inventory_locations, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:title, :string)
-      add(:area, :string)
+
+      add(:area, Ecto.Enum,
+        values: [:assembly, :receiving, :shipped, :shipping, :storage, :transit]
+      )
+
       add(:status, :string)
     end
 
@@ -31,7 +35,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
       add(:rma_description, :integer)
     end
 
-
     create table(:inventory_warehouses, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:title, :string)
@@ -48,6 +51,7 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
         :sku_id,
         references(:inventory_skus, on_delete: :nothing, type: key_type)
       )
+
       add(
         :location_id,
         references(:inventory_locations, on_delete: :nothing, type: key_type)
@@ -62,8 +66,52 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
         :properties_id,
         references(:inventory_properties, on_delete: :nothing, type: key_type)
       )
+    end
 
-      timestamps()
+    alter table(:inventory_parts) do
+      add(
+        :sku_id,
+        references(:inventory_skus, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :location_id,
+        references(:inventory_locations, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :quantity_id,
+        references(:inventory_quantitys, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :properties_id,
+        references(:inventory_properties, on_delete: :nothing, type: key_type)
+      )
+    end
+
+    alter table(:inventory_quantitys) do
+      add(
+        :part_id,
+        references(:inventory_parts, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :item_id,
+        references(:inventory_items, on_delete: :nothing, type: key_type)
+      )
+    end
+
+    alter table(:inventory_quantitys) do
+      add(
+        :part_id,
+        references(:inventory_parts, on_delete: :nothing, type: key_type)
+      )
+
+      add(
+        :item_id,
+        references(:inventory_items, on_delete: :nothing, type: key_type)
+      )
     end
   end
 end
