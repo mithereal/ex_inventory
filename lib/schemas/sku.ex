@@ -3,6 +3,11 @@ defmodule ExInventory.Schemas.Sku do
 
   alias ExInventory.Schemas.Item
 
+  @type t :: %__MODULE__{
+          sku: string(),
+          item: Item.t()
+        }
+
   schema "inventory_skus" do
     field(:sku, :string)
 

@@ -8,24 +8,26 @@ defmodule ExInventory.Schemas.Item do
   alias ExInventory.Schemas.Sku
   alias ExInventory.Schemas.Component
   alias ExInventory.Schemas.Location
-  alias ExInventory.Schemas.Item.Properties
+  alias ExInventory.Schemas.Item.Quantity
+
+  @type t :: %__MODULE__{
+          title: string(),
+          sub_title: string(),
+          description: string(),
+          location: Location.t(),
+          sku: Sku.t(),
+          quantity: Quantity.t(),
+          components: [Component.t()]
+        }
 
   schema "inventory_items" do
     field(:title, :string)
     field(:sub_title, :string)
     field(:description, :string)
 
-    field(:quantity_on_hand, :integer)
-    field(:quantity_on_backorder, :integer)
-    field(:quantity_in_transit, :integer)
-
-    field(:height, :float)
-    field(:width, :float)
-    field(:length, :float)
-    field(:weight, :float)
-
     belongs_to(:location, Location)
     belongs_to(:sku, Sku)
+    belongs_to(:quantity, Quantity)
 
     has_many(:components, Component)
   end

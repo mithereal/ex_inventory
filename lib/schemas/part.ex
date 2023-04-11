@@ -7,7 +7,9 @@ defmodule ExInventory.Schemas.Part do
 
   @type t :: %__MODULE__{
           location: Location.t(),
-          serial_number: String.t(),
+          serial_number: string(),
+          assembly_build_id: string(),
+          rma_description: string(),
           sku: Sku.t()
         }
 

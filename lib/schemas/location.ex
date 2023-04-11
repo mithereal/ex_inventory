@@ -5,7 +5,7 @@ defmodule ExInventory.Schemas.Location do
   alias ExInventory.Schemas.Item
 
   @type t :: %__MODULE__{
-          name: String.t(),
+          name: string(),
           area: atom(),
           disabled: boolean(),
           status: string(),

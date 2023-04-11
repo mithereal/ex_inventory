@@ -3,6 +3,10 @@ defmodule ExInventory.Schemas.Warehouse do
 
   alias ExInventory.Schemas.Warehouse.Properties
   #  alias ExInventory.Schemas.Item.Location, as: ITEM_LOCATION
+  @type t :: %__MODULE__{
+          title: string(),
+          location: string()
+        }
 
   schema "inventory_warehouses" do
     field(:title, :string)

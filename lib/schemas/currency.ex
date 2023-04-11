@@ -5,6 +5,22 @@ defmodule ExInventory.Schemas.Currency do
 
   @moduledoc false
 
+  @type t :: %__MODULE__{
+          name: string(),
+          digits: integer(),
+          symbol: string(),
+          alt_code: string(),
+          cash_digits: integer(),
+          cash_rounding: integer(),
+          code: string(),
+          from: string(),
+          iso_digits: integer(),
+          narrow_symbol: string(),
+          rounding: integer(),
+          tender: boolean(),
+          to: string()
+        }
+
   schema "inventory_currencies" do
     field(:name, :string)
     field(:digits, :integer)
