@@ -31,8 +31,8 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
     create table(:inventory_parts, primary_key: false) do
       add(:id, key_type, primary_key: true)
       add(:serial_number, :integer)
-      add(:assembly_build_id, :integer)
-      add(:rma_description, :integer)
+      add(:assembly_build_id, key_type)
+      add(:rma_description, :string)
     end
 
     create table(:inventory_warehouses, primary_key: false) do
