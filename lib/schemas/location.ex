@@ -19,7 +19,7 @@ defmodule ExInventory.Schemas.Location do
       :storage
     ])
 
-  default_location = Application.get_env(:ex_inventory, :default_location) || :receiving
+  default_location = Application.get_env(:ex_inventory, :default_location, :receiving)
 
   schema "inventory_locations" do
     field(:title, :string)
