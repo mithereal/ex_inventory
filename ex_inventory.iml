@@ -67,6 +67,11 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ecto_soft_delete" />
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ex_cldr_currencies" />
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/ecto_autoslug_field" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/gun" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/cowlib" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/cowboy" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/grpc" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ranch" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ex_doc" level="project" />

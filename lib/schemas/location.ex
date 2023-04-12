@@ -11,12 +11,22 @@ defmodule ExInventory.Schemas.Location do
           items: [Item.t()]
         }
 
+  locations =
+    Application.get_env(:ex_inventory, :locations,  [
+      :assembly,
+      :receiving,
+      :shipping,
+      :storage
+    ])
+
+  default_location = Application.get_env(:ex_inventory, :default_location) || :receiving
+
   schema "inventory_locations" do
     field(:title, :string)
 
     field(:area, Ecto.Enum,
-      values: [:assembly, :receiving, :shipping, :storage],
-      default: :receiving
+      values: locations,
+      default: default_location
     )
 
     has_many(:parts, Part)

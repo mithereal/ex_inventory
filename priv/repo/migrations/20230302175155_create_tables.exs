@@ -20,14 +20,21 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
     end
 
     create table(:inventory_locations, primary_key: false) do
+      locations =
+        Application.fetch_env!(:ex_inventory, :locations, [
+          :assembly,
+          :receiving,
+          :shipping,
+          :storage
+        ])
+
       add(:id, key_type, primary_key: true)
       add(:title, :string)
 
-      add(:area, Ecto.Enum, values: [:assembly, :receiving, :shipping, :storage])
+      add(:area, Ecto.Enum, values: locations)
 
       soft_delete_columns()
     end
-
 
     create table(:inventory_properties, primary_key: false) do
       add(:id, key_type, primary_key: true)
@@ -79,7 +86,8 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
         :component_id,
         references(:inventory_components, on_delete: :nothing, type: key_type)
       )
-      ###todo: change to through assoc bc we can have many
+
+      ### todo: change to through assoc bc we can have many
       add(
         :parts_id,
         references(:inventory_parts, on_delete: :nothing, type: key_type)
@@ -134,7 +142,8 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
         :sku_id,
         references(:inventory_skus, on_delete: :nothing, type: key_type)
       )
-###todo: change to through assoc bc we can have many
+
+      ### todo: change to through assoc bc we can have many
       add(
         :parts_id,
         references(:inventory_parts, on_delete: :nothing, type: key_type)
@@ -144,8 +153,6 @@ defmodule ExInventory.Repo.Migrations.CreateTables do
         :properties_id,
         references(:inventory_properties, on_delete: :nothing, type: key_type)
       )
-
-
     end
   end
 end
