@@ -1,10 +1,22 @@
 defmodule ExInventory.Factory do
   use ExMachina.Ecto, repo: ExInventory.Repo
 
-  alias ExInventory.Schemas.{Item, Sku, Location, Currency}
+  alias ExInventory.Schemas.{Item, Sku, Location, Currency, Part, Component}
 
   def item_factory do
     %Item{
+      title: "Test"
+    }
+  end
+
+  def part_factory do
+    %Part{
+      title: "Test"
+    }
+  end
+
+  def component_factory do
+    %Component{
       title: "Test"
     }
   end
