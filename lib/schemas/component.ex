@@ -16,5 +16,6 @@ defmodule ExInventory.Schemas.Component do
     has_many(:parts, Part)
     belongs_to(:sku, Sku)
     belongs_to(:properties, Properties)
+    belongs_to(:properties, Properties)
   end
 end
