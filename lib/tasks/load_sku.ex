@@ -20,8 +20,6 @@ defmodule ExInventory.Tasks.Skus.Load do
           x
           |> ExInventory.Sku.Supervisor.start_child()
         end)
-
-        ExInventory.Tasks.Items.Load.start_link()
     end
   end
 end
